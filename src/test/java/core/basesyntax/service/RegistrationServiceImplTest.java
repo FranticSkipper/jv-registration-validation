@@ -1,33 +1,33 @@
 package core.basesyntax.service;
 
-import core.basesyntax.dao.StorageDao;
-import core.basesyntax.dao.StorageDaoImpl;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 import core.basesyntax.db.Storage;
 import core.basesyntax.model.User;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class RegistrationServiceImplTest {
-    private static final RegistrationService registrationServiceImpl = new RegistrationServiceImpl();;
+    private static final RegistrationService registrationServiceImpl
+            = new RegistrationServiceImpl();
     private static final User user = new User();
 
     @BeforeAll
     public static void addUser() {
-        User user_1 = new User();
-        user_1.setLogin("Benson");
-        user_1.setId(1234567890L);
-        user_1.setAge(20);
-        user_1.setPassword("123456qwe");
-        User user_2 = new User();
-        user_2.setLogin("Alessandro");
-        user_2.setId(1234567890L);
-        user_2.setAge(20);
-        user_2.setPassword("123456qwe");
-        Storage.people.add(user_1);
-        Storage.people.add(user_2);
+        User user1 = new User();
+        user1.setLogin("Benson");
+        user1.setId(1234567890L);
+        user1.setAge(20);
+        user1.setPassword("123456qwe");
+        User user2 = new User();
+        user2.setLogin("Alessandro");
+        user2.setId(1234567890L);
+        user2.setAge(20);
+        user2.setPassword("123456qwe");
+        Storage.people.add(user1);
+        Storage.people.add(user2);
     }
 
     @BeforeEach
@@ -121,7 +121,6 @@ class RegistrationServiceImplTest {
         user.setPassword("qwe123f52z");
         assertEquals(user, registrationServiceImpl.register(user));
     }
-
 
     @Test
     public void register_negativeAge_NoOk() {

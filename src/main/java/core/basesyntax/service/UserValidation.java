@@ -33,11 +33,13 @@ public class UserValidation implements IUserValidation {
         }
 
         if (user.getPassword().length() < MIN_PASSWORD_LEN) {
-            throw new InvalidateUserData("Password must have a least " + MIN_PASSWORD_LEN + " letters!");
+            throw new InvalidateUserData("Password must have a least " + MIN_PASSWORD_LEN
+                    + " letters!");
         }
 
         if (user.getAge() < MIN_AGE) {
-            throw new InvalidateUserData("Not valid age: " + user.getAge() + ". Min allowed age is: " + MIN_AGE);
+            throw new InvalidateUserData("Not valid age: " + user.getAge()
+                    + ". Min allowed age is: " + MIN_AGE);
         }
 
         return user;
