@@ -10,8 +10,7 @@ public class RegistrationServiceImpl implements RegistrationService {
 
     @Override
     public User register(User user) {
-        User validUser = userValidation.validate(user);
-        storageDao.add(validUser);
-        return validUser;
+        User validatedUser = userValidation.validate(user);
+        return storageDao.add(validatedUser);
     }
 }

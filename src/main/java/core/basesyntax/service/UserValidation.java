@@ -20,8 +20,8 @@ public class UserValidation implements IUserValidation {
             throw new InvalidateUserData("Login cannot be null!");
         }
 
-        if (storageDaoImpl.get(user.getLogin()) == null) {
-            throw new InvalidateUserData("User is not found!");
+        if (storageDaoImpl.get(user.getLogin()) != null) {
+            throw new InvalidateUserData("User is already exist!");
         }
 
         if (user.getLogin().length() < MIN_LOGIN_LEN) {
