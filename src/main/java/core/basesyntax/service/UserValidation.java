@@ -21,11 +21,11 @@ public class UserValidation implements IUserValidation {
         }
 
         if (storageDaoImpl.get(user.getLogin()) != null) {
-            throw new InvalidateUserData("User is already exist!");
+            throw new InvalidateUserData("User with login " + user.getLogin() + "already exists!");
         }
 
         if (user.getLogin().length() < MIN_LOGIN_LEN) {
-            throw new InvalidateUserData("Login must have a least" + MIN_LOGIN_LEN + "letters!");
+            throw new InvalidateUserData("Login must be a least " + MIN_LOGIN_LEN + "characters!");
         }
 
         if (user.getPassword() == null) {
@@ -33,8 +33,12 @@ public class UserValidation implements IUserValidation {
         }
 
         if (user.getPassword().length() < MIN_PASSWORD_LEN) {
-            throw new InvalidateUserData("Password must have a least " + MIN_PASSWORD_LEN
-                    + " letters!");
+            throw new InvalidateUserData("Password must be a least " + MIN_PASSWORD_LEN
+                    + " characters!");
+        }
+
+        if (user.getAge() == null) {
+            throw new InvalidateUserData("Age cannot be null!");
         }
 
         if (user.getAge() < MIN_AGE) {
